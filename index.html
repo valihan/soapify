@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soapify - Modern WSDL Client</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>Soapify</h1>
+                <p>Advanced WSDL Client</p>
+            </div>
+            
+            <div class="wsdl-input-group">
+                <input type="text" id="wsdl-name" placeholder="Название проекта">
+                <input type="text" id="wsdl-url" placeholder="http://.../service?wsdl">
+                <button id="btn-add-wsdl" class="btn primary-btn">Добавить WSDL</button>
+            </div>
+            
+            <div class="wsdl-list" id="wsdl-list">
+                <!-- List of added WSDLs will appear here -->
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <h2 id="current-method-title">Выберите метод в меню слева</h2>
+                <div class="header-actions">
+                    <button id="btn-save-request" class="btn secondary-btn" disabled>Сохранить запрос</button>
+                    <button id="btn-send-request" class="btn primary-btn" disabled>Отправить запрос</button>
+                </div>
+            </header>
+            
+            <div class="workspace">
+                <div class="editor-pane">
+                    <h3>Запрос (XML) <span id="request-name-display"></span></h3>
+                    <div class="editor-container">
+                        <textarea id="request-editor"></textarea>
+                    </div>
+                </div>
+                <div class="editor-pane">
+                    <h3>Ответ сервера</h3>
+                    <div class="editor-container">
+                        <textarea id="response-editor"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saved requests panel -->
+            <div class="saved-requests-panel">
+                <h3>Сохраненные варианты вызова метода</h3>
+                <div id="saved-requests-list" class="saved-requests-list">
+                    <!-- List of saved requests -->
+                    <span class="text-secondary">Здесь будут отображаться сохраненные запросы</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal for Saving Request -->
+    <div id="save-modal" class="modal">
+        <div class="modal-content">
+            <h3>Сохранить вариант вызова</h3>
+            <input type="text" id="save-request-name" placeholder="Например: Валидный логин">
+            <div class="modal-actions">
+                <button id="btn-cancel-save" class="btn outline-btn">Отмена</button>
+                <button id="btn-confirm-save" class="btn primary-btn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
